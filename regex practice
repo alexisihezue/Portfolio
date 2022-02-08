@@ -1,0 +1,64 @@
+#Example 1
+#imports regex
+import re 
+
+#allows user to input their own string 
+sentence = input("Please input a string: ")
+
+#empty lists to store the numbers and indices respectively 
+empty = []
+index = []
+
+#method to find the numbers and indices in the user's string
+def arrange(text):
+
+  #puts each word/number in the string in a list
+  lis = text.split(" ")
+
+  #adds the numbers from the previous list to their own
+  for x in lis: 
+    if x.isdigit():
+      empty.append(x)
+
+  #converts each number to an integer 
+  new = [int(x) for x in empty]
+
+  #regex loop to find all indices of numbers and add them to a list
+  for x in re.finditer("\d+", text):
+    a = x.start(0)
+    index.append(a)  
+
+  #loop to create sentence with every number and its index 
+  for x in range(len(new)):
+    print("Number: " + str(new[x]) + " | Index: " + str(index[x]))
+
+#calls the method 
+arrange(sentence)
+
+
+#Example 2
+#allows user to input their own sentence 
+response = input("Please enter a sentence: ")
+
+#empty string to store words that fit the criteria
+empty = []
+
+#method to find words that fit the criteria 
+def find(text):
+
+  #puts each word in the sentence into a list
+  answer = text.strip(" ")
+  answer = answer.split(" ")
+  
+  #appends appropriate words to the empty list 
+  for x in answer:
+    if (("a" in x) or ("e" in x)): 
+      empty.append(x)
+    else: 
+      continue
+  
+  #prints sentence identifying words that fit the criteria 
+  print("The words in the sentence with \'a\' or \'e\' are: ", empty)
+
+#calls method 
+find(response)
