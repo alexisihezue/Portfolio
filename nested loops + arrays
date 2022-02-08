@@ -1,0 +1,27 @@
+#nested for loops to iterate through each indexed number in the list 
+  for i in range(0, n - 2):
+    for a in range(i+1, n-1):
+      for b in range(a+1, n):
+#if 3 numbers are found that sum to 0
+        if (new[i] + new[a] + new[b] == 0):
+          print("\n")
+          print("The following 3 numbers have a net sum of zero: \n")
+#appends the three numbers to one of the empty lists
+          empty.append(new[i])
+          empty.append(new[a])
+          empty.append(new[b])
+
+#variable that was previously false becomes true 
+          triple = True
+
+          print(empty, "\n")
+         
+#clears the list that stores the triple so it holds a new one 
+          empty.clear()
+
+ #in the case that there are no triples to be found          
+  if triple == False:
+    print("There are no 3 numbers that sum to 0. Please try again.")
+
+#calls the method 
+three(input)
